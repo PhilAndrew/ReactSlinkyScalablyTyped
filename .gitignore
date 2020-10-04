@@ -1,0 +1,12 @@
+.idea/
+target/
+.bloop/
+node_modules/
+.gradle/
+build/
+local.properties
+.expo/
+.metals/
+project/metals.sbt
+out/
+126-1262720_ribbon-vector-black-and-white-png-cancer-icon.png
