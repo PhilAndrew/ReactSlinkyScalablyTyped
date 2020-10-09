@@ -2,7 +2,7 @@ package demo
 
 import slinky.core._
 import slinky.core.annotations.react
-import slinky.web.html.div
+import slinky.web.html.{className, div, h1, h2, h3, h4, p, section}
 import typings.leaflet.mod.LatLngExpression
 import typings.reactLeaflet.components.{Map, Marker, Popup, TileLayer}
 import typings.reactLeaflet.mod.{MapProps, MarkerProps, PopupProps, TileLayerProps}
@@ -18,18 +18,77 @@ import typings.reactMonacoEditor.typesMod.MonacoEditorProps
   val component = FunctionalComponent[Props] { _ =>
     val position: LatLngExpression = js.Tuple2(51.505, -0.09)
 
-    div(
-      div("Monaco editor next"),
-    div(ReactMonacoEditor.withProps(MonacoEditorProps().set("height", "500").set("width", "500"))),
-    Map(MapProps().setCenter(position).setZoom(13))(
-      TileLayer(
-        TileLayerProps(url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
-          .setAttribution("&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors")
-      ),
-      Marker(MarkerProps(position = position))(
-        Popup(PopupProps())("A pretty CSS3 popup.\nEasily customizable.")
+    section(className := "section",
+      div(className := "container is-fluid",
+        div(className := "columns",
+          div(className := "column",
+            h2("Ribbon"),
+            ReactMonacoEditor.height("500")
+              .theme("vs-dark")
+              .language("")
+              .value(
+                """average is str as string to double
+                  |cast total length / cast num words
+                  |total length is sum of all lengths of words of str
+                  |num words is word count of str
+                  |
+                  |word count is str as string to nat
+                  |the length of words of str
+                  |
+                  |all lengths is strs as list string to list nat
+                  |map lengths strs
+                  |
+                  |show average is str as string to string
+                  |display is "The average word length is:"
+                  |display ++ show the average of str ++ "\n"
+                  |""".stripMargin)),
+            div(className := "column",
+              h2("Typescript"),
+            ReactMonacoEditor.height("500")
+              .theme("vs-dark")
+              .language("typescript")
+              .value(
+                """interface User {
+                  |  name: string;
+                  |  id: number;
+                  |}
+                  |
+                  |class UserAccount {
+                  |  name: string;
+                  |  id: number;
+                  |
+                  |  constructor(name: string, id: number) {
+                  |    this.name = name;
+                  |    this.id = id;
+                  |  }
+                  |}
+                  |
+                  |const user: User = new UserAccount("Murphy", 1);""".stripMargin))
+        )
+        )
       )
-    )
-    )
+
+/*    div(
+      div("Monaco editor next"),
+    div(ReactMonacoEditor.
+      width("500").height("500")
+      .theme("vs-dark")
+      .value(
+      """average is string to double
+        |average of str is cast total length / cast num words
+        |total length is sum of all lengths of words of str
+        |num words is word count of str
+        |
+        |word count is string to nat
+        |word count of str is the length of words of str
+        |
+        |all lengths is list string to list nat
+        |all lengths of strs is map lengths strs
+        |
+        |show average is string to string
+        |display is "The average word length is:"
+        |show average of str is display ++ show the average of str ++ "\n"
+        |""".stripMargin))
+    )*/
   }
 }
