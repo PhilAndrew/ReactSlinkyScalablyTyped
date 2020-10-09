@@ -27,18 +27,18 @@ import typings.reactMonacoEditor.typesMod.MonacoEditorProps
               .theme("vs-dark")
               .language("")
               .value(
-                """average is str as string to double
+                """average of str is string to double
                   |cast total length / cast num words
                   |total length is sum of all lengths of words of str
                   |num words is word count of str
                   |
-                  |word count is str as string to nat
+                  |word count of str is string to nat
                   |the length of words of str
                   |
-                  |all lengths is strs as list string to list nat
+                  |all lengths of strs is list string to list nat
                   |map lengths strs
                   |
-                  |show average is str as string to string
+                  |show average of str is string to string
                   |display is "The average word length is:"
                   |display ++ show the average of str ++ "\n"
                   |""".stripMargin)),
