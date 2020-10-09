@@ -64,11 +64,13 @@ lazy val `react-leaflet` = project
     useYarn := true,
     webpackDevServerPort := 8009,
     stFlavour := Flavour.Slinky,
+    stIgnore += "bulma",
     Compile / npmDependencies ++= Seq(
       "react-leaflet" -> "2.6.3",
       "@types/react-leaflet" -> "2.5.1",
       "leaflet" -> "1.6.0",
-      "react-monaco-editor" -> "0.40.0" // https://www.npmjs.com/package/react-monaco-editor
+      "react-monaco-editor" -> "0.40.0", // https://www.npmjs.com/package/react-monaco-editor
+      "bulma" -> "0.9.1"
     )
   )
 
@@ -103,7 +105,8 @@ lazy val withCssLoading: Project => Project =
       "css-loader" -> "3.4.2",
       "style-loader" -> "1.1.3",
       "file-loader" -> "5.1.0",
-      "url-loader" -> "3.0.0"
+      "url-loader" -> "3.0.0",
+      "monaco-editor-webpack-plugin" -> "2.0.0"
     )
   )
 

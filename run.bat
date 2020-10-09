@@ -1,0 +1,1 @@
+sbt ~react-leaflet/start
